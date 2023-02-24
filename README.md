@@ -2,15 +2,9 @@
 
 A new Flutter project.
 
-## Getting Started
+## Quiz App with a Twist
+This is a Flutter app that I developed to implement a quiz app with a few twists of my own. 
+The app allows users to test their knowledge in various categories, and includes some unique 
+features to make the experience more engaging.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+--> Will be adding more to this with time.
