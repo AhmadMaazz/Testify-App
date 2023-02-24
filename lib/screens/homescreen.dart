@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:myquizapp/screens/questions.dart';
+import 'package:myquizapp/screens/quizscreen.dart';
+import 'package:quickalert/quickalert.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  bool proceed = true;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -42,11 +50,22 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(height: size.height * 0.08),
                 TextButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const Questions(),
-                      ),
+                    QuickAlert.show(
+                      context: context,
+                      type: QuickAlertType.info,
+                      text:
+                          '\nAre you ready to create 10 true/false questions in the next section?',
+                      confirmBtnText: 'Yes',
+                      title: 'Disclaimer',
+                    ).then(
+                      (_) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Questions(),
+                          ),
+                        );
+                      },
                     );
                   },
                   style: TextButton.styleFrom(
@@ -67,7 +86,33 @@ class HomeScreen extends StatelessWidget {
                 ),
                 SizedBox(height: size.height * 0.025),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    QuickAlert.show(
+                      context: context,
+                      type: QuickAlertType.confirm,
+                      text: 'Do you want to take the quiz?',
+                      confirmBtnText: 'Yes',
+                      cancelBtnText: 'No',
+                      showCancelBtn: true,
+                      onCancelBtnTap: () {
+                        setState(() {
+                          proceed = false;
+                        });
+                        Navigator.of(context).pop(); // Close the alert dialog
+                      },
+                      confirmBtnColor: Colors.green,
+                    ).then((value) {
+                      if (proceed) {
+                        // Check the value of the boolean variable
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const QuizScreen(),
+                          ),
+                        );
+                      }
+                    });
+                  },
                   style: TextButton.styleFrom(
                     backgroundColor: const Color.fromRGBO(107, 43, 0, 1),
                     shape: RoundedRectangleBorder(

@@ -1,15 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Questions extends StatefulWidget {
-
-  const Questions({super.key});
-
-  @override
-  State<Questions> createState() => _QuestionsState();
-}
-
-class _QuestionsState extends State<Questions> {
-  List questions = [];
+class QuizScreen extends StatelessWidget {
+  const QuizScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
