@@ -13,6 +13,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        // primarySwatch: Colors.blue,
+        textTheme: const TextTheme(
+          caption: TextStyle(color: Colors.black), // change caption color here
+        ),
+
         appBarTheme: const AppBarTheme(
           color: Color.fromARGB(255, 255, 236, 192), // Set color for AppBar
         ),
