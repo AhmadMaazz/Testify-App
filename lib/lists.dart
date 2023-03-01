@@ -1,5 +1,0 @@
-class QuizList {
-  Map mydict = {
-    
-  };
-}

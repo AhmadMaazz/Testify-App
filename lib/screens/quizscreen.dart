@@ -1,25 +1,37 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/disp_res.dart';
+import 'homescreen.dart';
+
 class QuizScreen extends StatefulWidget {
-  
-  const QuizScreen({super.key});
+  final int random;
+
+  const QuizScreen({super.key, required this.random});
 
   @override
   State<QuizScreen> createState() => _QuizScreenState();
 }
 
 class _QuizScreenState extends State<QuizScreen> {
-  final Map<String, String> quiz1 = {
-    "What is the capital of France?": "Paris",
-    "Which country is the largest by area?": "Russia",
-    "What is the tallest mammal?": "Giraffe",
-    "Which planet is known as the Red Planet?": "Mars",
-    "What is the currency of Japan?": "Yen",
-    "Who painted the Mona Lisa?": "Leonardo da Vinci",
-    "What is the largest organ of the human body?": "Skin",
-    "What is the smallest country in the world?": "Vatican City",
-    "What is the fastest land animal?": "Cheetah",
-    "What is the boiling point of water in degrees Celsius?": "100",
+  late int rand;
+
+  @override
+  void initState() {
+    super.initState();
+    rand = widget.random;
+  }
+
+  final Map<String, bool> quiz1 = {
+    "The capital of France is Paris": true,
+    "The Great Barrier Reef is located in Australia": true,
+    "Mount Everest is the tallest mountain in the world": true,
+    "The Earth is flat": false,
+    "The currency of Japan is the Yen": true,
+    "Neil Armstrong was the first person to walk on the moon": true,
+    "The Statue of Liberty was a gift from France to the USA": true,
+    "The Nile is the longest river in the world": false,
+    "The Mona Lisa was painted by Michelangelo": false,
+    "The biggest ocean in the world is the Atlantic Ocean": false,
   };
 
   Map<String, bool> quiz2 = {
@@ -48,6 +60,97 @@ class _QuizScreenState extends State<QuizScreen> {
     'The capital of Canada is Toronto.': false,
   };
 
+  List marks = [];
+  double index = 0;
+  String t = 'true';
+  String f = 'false';
+  int check = 10;
+  int score = 0;
+
+  String display(rand) {
+    if (rand == 1) {
+      final questionNo = quiz1.keys.elementAt(index.toInt()).toString();
+      return questionNo;
+    } else if (rand == 2) {
+      final questionNo = quiz2.keys.elementAt(index.toInt()).toString();
+      return questionNo;
+    } else if (rand == 3) {
+      final questionNo = quiz3.keys.elementAt(index.toInt()).toString();
+      return questionNo;
+    }
+    return '';
+  }
+
+  void chooseAnswer(ind, text, rand) {
+    if (rand == 1) {
+      final answer =
+          quiz1.values.elementAt(ind.toInt()).toString().toLowerCase();
+      if (ind >= quiz1.length - 1) {
+        if (answer == text) {
+          marks.add('True');
+          score += 1;
+        } else {
+          marks.add('False');
+        }
+      } else {
+        if (answer == text) {
+          marks.add('True');
+          score += 1;
+        } else {
+          marks.add('False');
+        }
+        index += 1;
+      }
+      setState(() {
+        display(rand);
+      });
+    } else if (rand == 2) {
+      final answer =
+          quiz1.values.elementAt(ind.toInt()).toString().toLowerCase();
+      if (ind >= quiz1.length - 1) {
+        if (answer == text) {
+          marks.add('True');
+          score += 1;
+        } else {
+          marks.add('False');
+        }
+      } else {
+        if (answer == text) {
+          marks.add('True');
+          score += 1;
+        } else {
+          marks.add('False');
+        }
+        index += 1;
+      }
+      setState(() {
+        display(rand);
+      });
+    } else if (rand == 3) {
+      final answer =
+          quiz1.values.elementAt(ind.toInt()).toString().toLowerCase();
+      if (ind >= quiz1.length - 1) {
+        if (answer == text) {
+          marks.add('True');
+          score += 1;
+        } else {
+          marks.add('False');
+        }
+      } else {
+        if (answer == text) {
+          marks.add('True');
+          score += 1;
+        } else {
+          marks.add('False');
+        }
+        index += 1;
+      }
+      setState(() {
+        display(rand);
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,18 +165,174 @@ class _QuizScreenState extends State<QuizScreen> {
             color: Colors.black,
           ),
         ),
-        centerTitle: true,
         iconTheme: const IconThemeData(
           color: Colors.black,
-          size: 25,
         ),
-        // backgroundColor: const Color.fromARGB(255, 255, 236, 192),
+        centerTitle: true,
       ),
-      body: Center(
-        child: Column(
-          children: const [Text('hello world!')],
-        ),
-      ),
+      body: check > 0
+          ? Column(
+              children: [
+                const SizedBox(height: 20),
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height * 0.1,
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Colors.black,
+                        Colors.brown,
+                      ],
+                    ),
+                    // borderRadius: BorderRadius.all(Radius.circular(20)),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black26,
+                        blurRadius: 5.0,
+                        offset: Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: Center(
+                    child: Text(
+                      display(rand),
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 15),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [
+                            Colors.black,
+                            Colors.brown,
+                          ],
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black26,
+                            blurRadius: 5.0,
+                            offset: Offset(0, 2),
+                          ),
+                        ],
+                      ),
+                      child: TextButton(
+                        onPressed: () {
+                          chooseAnswer(index, t, rand);
+                          check -= 1;
+                        },
+                        child: const Text(
+                          'True',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 20),
+                    Container(
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [
+                            Colors.black,
+                            Colors.brown,
+                          ],
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black26,
+                            blurRadius: 5.0,
+                            offset: Offset(0, 2),
+                          ),
+                        ],
+                      ),
+                      child: TextButton(
+                        onPressed: () {
+                          chooseAnswer(index, f, rand);
+                          check -= 1;
+                        },
+                        child: const Text(
+                          'False',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                DisplayResult(
+                  marks: marks,
+                ),
+              ],
+            )
+          : Center(
+              child: Column(
+                children: [
+                  const SizedBox(height: 20),
+                  const Text(
+                    'Your Answers:',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                  ),
+                  const SizedBox(height: 20),
+                  DisplayResult(
+                    marks: marks,
+                  ),
+                  const SizedBox(height: 20),
+                  const SizedBox(height: 10),
+                  const Text(
+                    'Your Score',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    'You scored: $score points',
+                    style: const TextStyle(
+                      fontSize: 15,
+                    ),
+                  ),
+                  const SizedBox(height: 40),
+                  FloatingActionButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HomeScreen(),
+                        ),
+                      );
+                    },
+                    backgroundColor: const Color.fromARGB(255, 255, 236, 192),
+                    foregroundColor: Colors.black,
+                    elevation: 4.0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    heroTag: 'Marks',
+                    clipBehavior: Clip.none,
+                    splashColor: Colors.brown,
+                    child: const Icon(Icons.home),
+                  ),
+                ],
+              ),
+            ),
     );
   }
 }

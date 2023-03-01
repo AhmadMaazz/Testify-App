@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myquizapp/screens/homescreen.dart';
-import 'package:myquizapp/widgets/disp_res.dart';
+import 'package:testify/screens/homescreen.dart';
+import 'package:testify/widgets/disp_res.dart';
 
 class QuestionQuiz extends StatefulWidget {
   final Map<String, bool> questions;
@@ -100,6 +100,7 @@ class _QuestionQuizState extends State<QuestionQuiz> {
                   child: Center(
                     child: Text(
                       display(),
+                      textAlign: TextAlign.center,
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 18,

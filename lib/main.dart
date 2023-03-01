@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myquizapp/screens/homescreen.dart';
+import 'package:testify/screens/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Testify',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // primarySwatch: Colors.blue,
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
           color: Color.fromARGB(255, 255, 236, 192), // Set color for AppBar
         ),
       ),
-      home: const HomeScreen(),
+      home: const SplashScreen(),
     );
   }
 }

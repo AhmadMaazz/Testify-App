@@ -1,6 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
-import 'package:myquizapp/screens/questions.dart';
-import 'package:myquizapp/screens/quizscreen.dart';
+import 'package:testify/screens/questions.dart';
+import 'package:testify/screens/quizscreen.dart';
 import 'package:quickalert/quickalert.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,6 +13,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int rand = 1;
   bool proceed = true;
   @override
   Widget build(BuildContext context) {
@@ -102,12 +105,15 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                       confirmBtnColor: Colors.green,
                     ).then((value) {
+                      setState(() {
+                        rand = Random().nextInt(3) + 1;
+                      });
                       if (proceed) {
                         // Check the value of the boolean variable
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const QuizScreen(),
+                            builder: (context) => QuizScreen(random: rand),
                           ),
                         );
                       }
