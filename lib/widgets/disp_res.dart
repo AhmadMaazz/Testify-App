@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 
-class ContentDisplay extends StatelessWidget {
-  const ContentDisplay({
-    Key? key,
-    required Map<String, bool> questions,
-  })  : _questions = questions,
-        super(key: key);
+class DisplayResult extends StatelessWidget {
+  final List marks;
 
-  final Map<String, bool> _questions;
+  const DisplayResult({Key? key, required this.marks}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +31,9 @@ class ContentDisplay extends StatelessWidget {
       child: ListView.builder(
         shrinkWrap: true,
         // physics: const NeverScrollableScrollPhysics(),
-        itemCount: _questions.length,
+        itemCount: marks.length,
         itemBuilder: (context, index) {
-          final question = _questions.keys.elementAt(index);
-          final answer = _questions.values.elementAt(index);
+          final values = marks.elementAt(index).toString();
           final number = index + 1;
 
           return ListTileTheme(
@@ -58,19 +53,11 @@ class ContentDisplay extends StatelessWidget {
                 ),
               ),
               title: Text(
-                question,
+                values,
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 18.0,
                   fontWeight: FontWeight.bold,
-                ),
-              ),
-              subtitle: Text(
-                answer.toString(),
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.normal,
                 ),
               ),
               trailing: const Icon(Icons.arrow_forward_ios_rounded,

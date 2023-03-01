@@ -1,0 +1,5 @@
+class QuizList {
+  Map mydict = {
+    
+  };
+}
