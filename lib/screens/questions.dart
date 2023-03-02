@@ -73,7 +73,7 @@ class _QuestionsState extends State<Questions> {
                       color: const Color.fromARGB(255, 255, 236, 192),
                       borderRadius: BorderRadius.circular(25),
                     ),
-                    child: limit >= 0
+                    child: limit > 0
                         ? Form(
                             key: _formKey,
                             child: Column(
@@ -300,7 +300,7 @@ class _QuestionsState extends State<Questions> {
                       padding: const EdgeInsets.all(5.0),
                       child: TextButton(
                         onPressed: () {
-                          Navigator.push(
+                          Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                               builder: (context) => QuestionQuiz(

@@ -214,7 +214,7 @@ class _QuestionQuizState extends State<QuestionQuiz> {
                   const SizedBox(height: 40),
                   FloatingActionButton(
                     onPressed: () {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                           builder: (context) => const HomeScreen(),

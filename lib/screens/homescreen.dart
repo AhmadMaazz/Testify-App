@@ -62,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       title: 'Disclaimer',
                     ).then(
                       (_) {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                             builder: (context) => const Questions(),
@@ -110,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       });
                       if (proceed) {
                         // Check the value of the boolean variable
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                             builder: (context) => QuizScreen(random: rand),
