@@ -4,12 +4,12 @@ The app allows users to test their knowledge in various categories, and includes
 features to make the experience more engaging.
 
 ## Table of Contents
-Features\n
-Video\n
-Working\n
-Getting Started\n
-Technologies Used\n
-Contributing\n
+Features\
+Video\
+Working\
+Getting Started\
+Technologies Used\
+Contributing\
 
 ## Features
 Get instant feedback on whether your answer was correct or incorrect
