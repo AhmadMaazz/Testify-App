@@ -9,7 +9,7 @@ Video\
 Working\
 Getting Started\
 Technologies Used\
-Contributing\
+Contributing
 
 ## Features
 Get instant feedback on whether your answer was correct or incorrect
