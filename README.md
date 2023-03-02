@@ -17,7 +17,7 @@ View your overall score at the end of the quiz
 Enjoy an Easy and Beautiful user interface
 
 ## App Video
-<iframe width="560" height="315" src="https://www.youtube.com/embed/3h9UCqSwsfc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/3h9UCqSwsfc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 ## Working
 How i have designed the app is that users can either make a quiz and then let someone take their quiz or they can take the quiz without making it which includes some pre-made questions that i have added.
